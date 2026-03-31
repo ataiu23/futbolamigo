@@ -444,8 +444,39 @@ bool get isWeb => kIsWeb;
 const kBreakpointSmall = 479.0;
 const kBreakpointMedium = 767.0;
 const kBreakpointLarge = 991.0;
+
+const kMinPhoneWidth = 320.0;
+const kMaxPhoneWidth = 600.0;
+
 bool isMobileWidth(BuildContext context) =>
     MediaQuery.sizeOf(context).width < kBreakpointSmall;
+
+bool isPhone(BuildContext context) {
+  final width = MediaQuery.sizeOf(context).width;
+  return width >= kMinPhoneWidth && width < kMaxPhoneWidth;
+}
+
+bool isTabletOrLarger(BuildContext context) {
+  return !isPhone(context);
+}
+
+enum DeviceType {
+  phoneSmall,
+  phoneMedium,
+  phoneLarge,
+  tablet,
+  desktop,
+}
+
+DeviceType getDeviceType(BuildContext context) {
+  final width = MediaQuery.sizeOf(context).width;
+  if (width < 400.0) return DeviceType.phoneSmall;
+  if (width < 480.0) return DeviceType.phoneMedium;
+  if (width < kMaxPhoneWidth) return DeviceType.phoneLarge;
+  if (width < kBreakpointLarge) return DeviceType.tablet;
+  return DeviceType.desktop;
+}
+
 bool responsiveVisibility({
   required BuildContext context,
   bool phone = true,
