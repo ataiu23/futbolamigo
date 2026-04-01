@@ -52,6 +52,10 @@ class _SignWidgetState extends State<SignWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final isSmallScreen = screenWidth < 380;
+    final titleFontSize = isSmallScreen ? 13.0 : 15.0;
+
     return TabletBlockerWidget(
       child: GestureDetector(
         onTap: () {
@@ -108,27 +112,33 @@ class _SignWidgetState extends State<SignWidget> {
                               children: [
                                 Align(
                                   alignment: AlignmentDirectional(-0.06, -0.82),
-                                  child: Text(
-                                    'Introduce tus datos y date de alta',
-                                    style: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .override(
-                                          font: GoogleFonts.plusJakartaSans(
+                                  child: Container(
+                                    width: screenWidth * 0.75,
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 8.0),
+                                    child: Text(
+                                      'Introduce tus datos y date de alta',
+                                      textAlign: TextAlign.center,
+                                      style: FlutterFlowTheme.of(context)
+                                          .displaySmall
+                                          .override(
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight: FontWeight.w500,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .displaySmall
+                                                      .fontStyle,
+                                            ),
+                                            color: Color(0xFF101213),
+                                            fontSize: titleFontSize,
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.w500,
                                             fontStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .displaySmall
                                                     .fontStyle,
                                           ),
-                                          color: Color(0xFF101213),
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .displaySmall
-                                                  .fontStyle,
-                                        ),
+                                    ),
                                   ),
                                 ),
                                 Align(

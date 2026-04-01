@@ -49,6 +49,12 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final screenHeight = MediaQuery.sizeOf(context).height;
+    final isSmallScreen = screenWidth < 380;
+    final titleFontSize = isSmallScreen ? 13.0 : 15.0;
+    final textFontSize = isSmallScreen ? 11.0 : 13.0;
+
     return TabletBlockerWidget(
       child: GestureDetector(
         onTap: () {
@@ -275,9 +281,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                           // You will have to add an action on this rich text to go to your login page.
                           Align(
                             alignment: AlignmentDirectional(-0.12, 0.63),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 12.0),
+                            child: Container(
+                              width: screenWidth * 0.75,
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -288,14 +294,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 },
                                 child: RichText(
                                   textScaler: MediaQuery.of(context).textScaler,
+                                  textAlign: TextAlign.center,
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
                                         text: 'Don\'t have an account? ',
-                                        style: TextStyle(),
+                                        style: TextStyle(
+                                          fontSize: textFontSize,
+                                          color: Color(0xFF101213),
+                                        ),
                                       ),
                                       TextSpan(
-                                        text: ' Sign Up here',
+                                        text: 'Sign Up here',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -307,7 +317,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                         .fontStyle,
                                               ),
                                               color: Color(0xFF4B39EF),
-                                              fontSize: 14.0,
+                                              fontSize: textFontSize,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                               fontStyle:
@@ -434,25 +444,30 @@ class _LoginWidgetState extends State<LoginWidget> {
                           ),
                           Align(
                             alignment: AlignmentDirectional(-0.06, -0.82),
-                            child: Text(
-                              'Bienvenidos a la App Futbol Amigo',
-                              style: FlutterFlowTheme.of(context)
-                                  .displaySmall
-                                  .override(
-                                    font: GoogleFonts.plusJakartaSans(
+                            child: Container(
+                              width: screenWidth * 0.75,
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text(
+                                'Bienvenidos a la App Futbol Amigo',
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .displaySmall
+                                    .override(
+                                      font: GoogleFonts.plusJakartaSans(
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .displaySmall
+                                            .fontStyle,
+                                      ),
+                                      color: Color(0xFF101213),
+                                      fontSize: titleFontSize,
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                       fontStyle: FlutterFlowTheme.of(context)
                                           .displaySmall
                                           .fontStyle,
                                     ),
-                                    color: Color(0xFF101213),
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .displaySmall
-                                        .fontStyle,
-                                  ),
+                              ),
                             ),
                           ),
                         ],
