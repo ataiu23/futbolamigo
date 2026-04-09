@@ -53,8 +53,8 @@ class _SignWidgetState extends State<SignWidget> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
-    final isSmallScreen = screenWidth < 380;
-    final titleFontSize = isSmallScreen ? 13.0 : 15.0;
+    final isSmallScreen = screenWidth < 414;
+    final titleFontSize = isSmallScreen ? 15.0 : 10.0;
 
     return TabletBlockerWidget(
       child: GestureDetector(
@@ -114,8 +114,8 @@ class _SignWidgetState extends State<SignWidget> {
                                   alignment: AlignmentDirectional(-0.06, -0.82),
                                   child: Container(
                                     width: screenWidth * 0.75,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 8.0),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 8.0, vertical: 4.0),
                                     child: Text(
                                       'Introduce tus datos y date de alta',
                                       textAlign: TextAlign.center,

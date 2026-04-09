@@ -51,9 +51,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final screenHeight = MediaQuery.sizeOf(context).height;
-    final isSmallScreen = screenWidth < 380;
-    final titleFontSize = isSmallScreen ? 13.0 : 15.0;
-    final textFontSize = isSmallScreen ? 11.0 : 13.0;
+    final isSmallScreen = screenWidth < 414;
+    final titleFontSize = isSmallScreen ? 15.0 : 10.0;
+    final textFontSize = isSmallScreen ? 13.0 : 8.0;
 
     return TabletBlockerWidget(
       child: GestureDetector(
@@ -446,7 +446,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                             alignment: AlignmentDirectional(-0.06, -0.82),
                             child: Container(
                               width: screenWidth * 0.75,
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 4.0),
                               child: Text(
                                 'Bienvenidos a la App Futbol Amigo',
                                 textAlign: TextAlign.center,
