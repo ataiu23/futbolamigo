@@ -61,6 +61,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
     final containerSpacing = isSmallScreen ? 100.0 : 90.0;
+    final imageWidthRatio = isSmallScreen ? 0.5 : 0.4;
+    final imageHeightRatio = isSmallScreen ? 0.13 : 0.10;
+    final imageInsideHeightRatio = isSmallScreen ? 0.2 : 0.15;
+    final imageMarginBottom = isSmallScreen ? 0.0 : 15.0;
 
     return FutureBuilder<List<DatosUsuariosRow>>(
       future: DatosUsuariosTable().querySingleRow(
@@ -134,7 +138,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           AlignmentDirectional(0.0, -1.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 45.0, 0.0, 0.0),
+                                            0.0, 45.0, 0.0, imageMarginBottom),
                                         child: Material(
                                           color: Colors.transparent,
                                           elevation: 6.0,
@@ -150,10 +154,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           child: Container(
                                             width: MediaQuery.sizeOf(context)
                                                     .width *
-                                                0.5,
+                                                imageWidthRatio,
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
-                                                0.13,
+                                                imageHeightRatio,
                                             decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -176,10 +180,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 child: Image.asset(
                                                   'assets/images/noticias2.webp',
                                                   width: 237.2,
-                                                  height:
-                                                      MediaQuery.sizeOf(context)
-                                                              .height *
-                                                          0.2,
+                                                  height: MediaQuery.sizeOf(
+                                                              context)
+                                                          .height *
+                                                      imageInsideHeightRatio,
                                                   fit: BoxFit.fill,
                                                 ),
                                               ),
