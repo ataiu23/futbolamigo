@@ -60,6 +60,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     context.watch<FFAppState>();
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
+    final containerSpacing = isSmallScreen ? 100.0 : 90.0;
 
     return FutureBuilder<List<DatosUsuariosRow>>(
       future: DatosUsuariosTable().querySingleRow(
@@ -197,7 +198,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 100.0, 0.0, 130.0),
+                                0.0, containerSpacing, 0.0, 130.0),
                             child: FutureBuilder<List<NoticiasRow>>(
                               future: NoticiasTable().queryRows(
                                 queryFn: (q) => q,
