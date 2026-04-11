@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/components/navbarequipos_widget.dart';
+import '/components/tablet_blocker_widget.dart';
 import '/flutter_flow/flutter_flow_data_table.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -45,73 +46,78 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-        FocusManager.instance.primaryFocus?.unfocus();
-      },
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          top: true,
-          bottom: true,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: Image.asset('assets/images/sing_in.webp').image,
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final isSmallScreen = screenWidth < 414;
+    final equipoFontSize = isSmallScreen ? 13.0 : 8.0;
+    final columnaFontSize = isSmallScreen ? 13.0 : 11.0;
+
+    return TabletBlockerWidget(
+      child: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: Scaffold(
+          key: scaffoldKey,
+          backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+          body: SafeArea(
+            top: true,
+            bottom: true,
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).secondaryBackground,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: Image.asset('assets/images/sing_in.webp').image,
+                ),
               ),
-            ),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(16.0, 40.0, 16.0, 40.0),
-              child: Center(
-                child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: 400.0,
-                  ),
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        // Sección Último Partido - 35% del espacio
-                        Flexible(
-                          flex: 35,
-                          child: _buildUltimoPartidoSection(),
-                        ),
-                        SizedBox(height: 8.0),
-                        // Sección Clasificación - 30% del espacio
-                        Flexible(
-                          flex: 30,
-                          child: _buildClasificacionSection(),
-                        ),
-                        SizedBox(height: 8.0),
-                        // Sección Próximo Partido - 35% del espacio
-                        Flexible(
-                          flex: 35,
-                          child: _buildProximoPartidoSection(),
-                        ),
-                      ],
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 40.0, 16.0, 40.0),
+                child: Center(
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 400.0,
+                    ),
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Flexible(
+                            flex: 35,
+                            child: _buildUltimoPartidoSection(),
+                          ),
+                          SizedBox(height: 8.0),
+                          Flexible(
+                            flex: 30,
+                            child: _buildClasificacionSection(
+                                equipoFontSize, columnaFontSize),
+                          ),
+                          SizedBox(height: 8.0),
+                          Flexible(
+                            flex: 35,
+                            child: _buildProximoPartidoSection(),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-        bottomNavigationBar: wrapWithModel(
-          model: _model.navbarequiposModel,
-          updateCallback: () => safeSetState(() {}),
-          child: NavbarequiposWidget(),
+          bottomNavigationBar: wrapWithModel(
+            model: _model.navbarequiposModel,
+            updateCallback: () => safeSetState(() {}),
+            child: NavbarequiposWidget(),
+          ),
         ),
       ),
     );
@@ -139,7 +145,7 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
             ),
           );
         }
-        
+
         final resultados = snapshot.data!;
         final partido = resultados.isNotEmpty ? resultados.first : null;
 
@@ -158,9 +164,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   'Último Partido',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    font: GoogleFonts.interTight(),
-                    fontSize: 20.0,
-                  ),
+                        font: GoogleFonts.interTight(),
+                        fontSize: 20.0,
+                      ),
                 ),
                 SizedBox(height: 4.0),
                 Text(
@@ -169,9 +175,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     'fecha',
                   ),
                   style: FlutterFlowTheme.of(context).titleSmall.override(
-                    font: GoogleFonts.interTight(),
-                    fontSize: 11.0,
-                  ),
+                        font: GoogleFonts.interTight(),
+                        fontSize: 11.0,
+                      ),
                 ),
               ],
             ),
@@ -192,9 +198,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     valueOrDefault<String>(partido.clubLocal, 'local'),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      font: GoogleFonts.interTight(),
-                      fontSize: 14.0,
-                    ),
+                          font: GoogleFonts.interTight(),
+                          fontSize: 14.0,
+                        ),
                   ),
                 ),
                 Expanded(
@@ -202,9 +208,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     valueOrDefault<String>(partido.clubVisitante, 'visitante'),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      font: GoogleFonts.interTight(),
-                      fontSize: 14.0,
-                    ),
+                          font: GoogleFonts.interTight(),
+                          fontSize: 14.0,
+                        ),
                   ),
                 ),
               ],
@@ -219,15 +225,15 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     '*',
                   ),
                   style: FlutterFlowTheme.of(context).displayLarge.override(
-                    font: GoogleFonts.interTight(),
-                    fontSize: 36.0,
-                  ),
+                        font: GoogleFonts.interTight(),
+                        fontSize: 36.0,
+                      ),
                 ),
                 Text(
                   '-',
                   style: FlutterFlowTheme.of(context).displayLarge.override(
-                    fontSize: 36.0,
-                  ),
+                        fontSize: 36.0,
+                      ),
                 ),
                 Text(
                   valueOrDefault<String>(
@@ -235,9 +241,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     '*',
                   ),
                   style: FlutterFlowTheme.of(context).displayLarge.override(
-                    font: GoogleFonts.interTight(),
-                    fontSize: 36.0,
-                  ),
+                        font: GoogleFonts.interTight(),
+                        fontSize: 36.0,
+                      ),
                 ),
               ],
             ),
@@ -247,7 +253,8 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
     );
   }
 
-  Widget _buildClasificacionSection() {
+  Widget _buildClasificacionSection(
+      double equipoFontSize, double columnaFontSize) {
     return FutureBuilder<List<ClasificacionRow>>(
       future: ClasificacionTable().queryRows(
         queryFn: (q) => q
@@ -290,10 +297,11 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   child: Text(
                     'Equipo',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
-                      font: GoogleFonts.inter(),
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      fontSize: 13.0,
-                    ),
+                          font: GoogleFonts.inter(),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: equipoFontSize,
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                 ),
                 fixedWidth: 70.0,
@@ -304,10 +312,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   child: Text(
                     'Pj',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
-                      font: GoogleFonts.inter(),
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      fontSize: 13.0,
-                    ),
+                          font: GoogleFonts.inter(),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: columnaFontSize,
+                        ),
                   ),
                 ),
               ),
@@ -317,10 +325,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   child: Text(
                     'Pg',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
-                      font: GoogleFonts.inter(),
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      fontSize: 13.0,
-                    ),
+                          font: GoogleFonts.inter(),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: columnaFontSize,
+                        ),
                   ),
                 ),
               ),
@@ -330,10 +338,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   child: Text(
                     'Pe',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
-                      font: GoogleFonts.inter(),
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      fontSize: 13.0,
-                    ),
+                          font: GoogleFonts.inter(),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: columnaFontSize,
+                        ),
                   ),
                 ),
               ),
@@ -343,10 +351,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   child: Text(
                     'Pp',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
-                      font: GoogleFonts.inter(),
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      fontSize: 13.0,
-                    ),
+                          font: GoogleFonts.inter(),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: columnaFontSize,
+                        ),
                   ),
                 ),
               ),
@@ -356,16 +364,18 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   child: Text(
                     'Ptos',
                     style: FlutterFlowTheme.of(context).labelLarge.override(
-                      font: GoogleFonts.inter(),
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      fontSize: 13.0,
-                    ),
+                          font: GoogleFonts.inter(),
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          fontSize: columnaFontSize,
+                          fontWeight: FontWeight.w600,
+                        ),
                   ),
                 ),
                 fixedWidth: 45.0,
               ),
             ],
-            dataRowBuilder: (equipo, index, selected, onSelectChanged) => DataRow(
+            dataRowBuilder: (equipo, index, selected, onSelectChanged) =>
+                DataRow(
               color: MaterialStateProperty.all(
                 index % 2 == 0
                     ? FlutterFlowTheme.of(context).secondaryBackground
@@ -375,10 +385,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                 DataCell(Text(
                   valueOrDefault<String>(equipo.club, 'club'),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 11.0,
-                  ),
+                        font: GoogleFonts.inter(),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 11.0,
+                      ),
                 )),
                 DataCell(Text(
                   valueOrDefault<String>(equipo.pjugado?.toString(), 'Pj'),
@@ -399,9 +409,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                 DataCell(Text(
                   valueOrDefault<String>(equipo.puntos?.toString(), 'Ptos'),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(),
-                    fontWeight: FontWeight.w600,
-                  ),
+                        font: GoogleFonts.inter(),
+                        fontWeight: FontWeight.w600,
+                      ),
                 )),
               ],
             ),
@@ -415,7 +425,8 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
             addHorizontalDivider: true,
             addTopAndBottomDivider: false,
             hideDefaultHorizontalDivider: true,
-            horizontalDividerColor: FlutterFlowTheme.of(context).secondaryBackground,
+            horizontalDividerColor:
+                FlutterFlowTheme.of(context).secondaryBackground,
             horizontalDividerThickness: 1.0,
             addVerticalDivider: false,
           ),
@@ -465,9 +476,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   'Próximo Partido',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    font: GoogleFonts.interTight(),
-                    fontSize: 20.0,
-                  ),
+                        font: GoogleFonts.interTight(),
+                        fontSize: 20.0,
+                      ),
                 ),
                 SizedBox(height: 4.0),
                 // Fecha y hora
@@ -477,10 +488,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     Text(
                       'Fecha:',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        font: GoogleFonts.inter(),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 11.0,
-                      ),
+                            font: GoogleFonts.inter(),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 11.0,
+                          ),
                     ),
                     SizedBox(width: 4.0),
                     Text(
@@ -489,18 +500,18 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                         'fecha',
                       ),
                       style: FlutterFlowTheme.of(context).titleSmall.override(
-                        font: GoogleFonts.interTight(),
-                        fontSize: 11.0,
-                      ),
+                            font: GoogleFonts.interTight(),
+                            fontSize: 11.0,
+                          ),
                     ),
                     SizedBox(width: 16.0),
                     Text(
                       'Hora',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        font: GoogleFonts.inter(),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 11.0,
-                      ),
+                            font: GoogleFonts.inter(),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 11.0,
+                          ),
                     ),
                     SizedBox(width: 4.0),
                     Text(
@@ -509,10 +520,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                         '- - : - -',
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        font: GoogleFonts.inter(),
-                        fontWeight: FontWeight.w600,
-                        fontSize: 11.0,
-                      ),
+                            font: GoogleFonts.inter(),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 11.0,
+                          ),
                     ),
                   ],
                 ),
@@ -535,9 +546,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     valueOrDefault<String>(partido.clubLocal, 'local'),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      font: GoogleFonts.interTight(),
-                      fontSize: 14.0,
-                    ),
+                          font: GoogleFonts.interTight(),
+                          fontSize: 14.0,
+                        ),
                   ),
                 ),
                 Expanded(
@@ -545,9 +556,9 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                     valueOrDefault<String>(partido.clubVisitante, 'visitante'),
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      font: GoogleFonts.interTight(),
-                      fontSize: 14.0,
-                    ),
+                          font: GoogleFonts.interTight(),
+                          fontSize: 14.0,
+                        ),
                   ),
                 ),
               ],
@@ -559,22 +570,22 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                 Text(
                   '0',
                   style: FlutterFlowTheme.of(context).displayLarge.override(
-                    font: GoogleFonts.interTight(),
-                    fontSize: 36.0,
-                  ),
+                        font: GoogleFonts.interTight(),
+                        fontSize: 36.0,
+                      ),
                 ),
                 Text(
                   '-',
                   style: FlutterFlowTheme.of(context).displayLarge.override(
-                    fontSize: 36.0,
-                  ),
+                        fontSize: 36.0,
+                      ),
                 ),
                 Text(
                   '0',
                   style: FlutterFlowTheme.of(context).displayLarge.override(
-                    font: GoogleFonts.interTight(),
-                    fontSize: 36.0,
-                  ),
+                        font: GoogleFonts.interTight(),
+                        fontSize: 36.0,
+                      ),
                 ),
               ],
             ),

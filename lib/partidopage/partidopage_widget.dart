@@ -3,6 +3,7 @@ import '/components/anulagol_widget.dart';
 import '/components/gol_widget.dart';
 import '/components/golno_amigo_widget.dart';
 import '/components/navbarequipos_widget.dart';
+import '/components/tablet_blocker_widget.dart';
 import '/components/tarjeta_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -115,6 +116,13 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final isSmallScreen = screenWidth < 414;
+    final equipoFontSize = isSmallScreen ? 12.0 : 8.0;
+    final columnaFontSize = isSmallScreen ? 14.0 : 11.0;
+    final ptsFontSize = isSmallScreen ? 14.0 : 11.0;
+    final equipoFontWeight = FontWeight.w600;
+
     return FutureBuilder<List<ResultadosRow>>(
       future: ResultadosTable().querySingleRow(
         queryFn: (q) => q
