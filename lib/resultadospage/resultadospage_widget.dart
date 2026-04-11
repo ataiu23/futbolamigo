@@ -48,8 +48,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
-    final equipoFontSize = isSmallScreen ? 13.0 : 8.0;
+    final equipoFontSize = isSmallScreen ? 13.0 : 11.0;
     final columnaFontSize = isSmallScreen ? 13.0 : 11.0;
+    final contenidoClubFontSize = isSmallScreen ? 11.0 : 8.0;
+    final contenidoNumeroFontSize = isSmallScreen ? null : 11.0;
 
     return TabletBlockerWidget(
       child: GestureDetector(
@@ -98,7 +100,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                           Flexible(
                             flex: 30,
                             child: _buildClasificacionSection(
-                                equipoFontSize, columnaFontSize),
+                                equipoFontSize,
+                                columnaFontSize,
+                                contenidoClubFontSize,
+                                contenidoNumeroFontSize),
                           ),
                           SizedBox(height: 8.0),
                           Flexible(
@@ -254,7 +259,10 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
   }
 
   Widget _buildClasificacionSection(
-      double equipoFontSize, double columnaFontSize) {
+      double equipoFontSize,
+      double columnaFontSize,
+      double contenidoClubFontSize,
+      double? contenidoNumeroFontSize) {
     return FutureBuilder<List<ClasificacionRow>>(
       future: ClasificacionTable().queryRows(
         queryFn: (q) => q
@@ -387,30 +395,65 @@ class _ResultadospageWidgetState extends State<ResultadospageWidget> {
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(),
                         fontWeight: FontWeight.w600,
-                        fontSize: 11.0,
+                        fontSize: contenidoClubFontSize,
                       ),
                 )),
                 DataCell(Text(
                   valueOrDefault<String>(equipo.pjugado?.toString(), 'Pj'),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontSize: contenidoNumeroFontSize,
+                      ),
                 )),
                 DataCell(Text(
                   valueOrDefault<String>(equipo.pganado?.toString(), 'Pg'),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontSize: contenidoNumeroFontSize,
+                      ),
                 )),
                 DataCell(Text(
                   valueOrDefault<String>(equipo.pempatado?.toString(), 'Pe'),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontSize: contenidoNumeroFontSize,
+                      ),
                 )),
                 DataCell(Text(
                   valueOrDefault<String>(equipo.pperdido?.toString(), 'Pp'),
-                  style: FlutterFlowTheme.of(context).bodyMedium,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontSize: contenidoNumeroFontSize,
+                      ),
                 )),
                 DataCell(Text(
                   valueOrDefault<String>(equipo.puntos?.toString(), 'Ptos'),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(),
                         fontWeight: FontWeight.w600,
+                        fontSize: contenidoNumeroFontSize,
+                      ),
+                )),
+                DataCell(Text(
+                  valueOrDefault<String>(equipo.pganado?.toString(), 'Pg'),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontSize: 11.0,
+                      ),
+                )),
+                DataCell(Text(
+                  valueOrDefault<String>(equipo.pempatado?.toString(), 'Pe'),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontSize: 11.0,
+                      ),
+                )),
+                DataCell(Text(
+                  valueOrDefault<String>(equipo.pperdido?.toString(), 'Pp'),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        fontSize: 11.0,
+                      ),
+                )),
+                DataCell(Text(
+                  valueOrDefault<String>(equipo.puntos?.toString(), 'Ptos'),
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.inter(),
+                        fontWeight: FontWeight.w600,
+                        fontSize: contenidoClubFontSize,
                       ),
                 )),
               ],
