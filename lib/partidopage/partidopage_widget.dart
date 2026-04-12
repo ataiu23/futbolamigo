@@ -118,10 +118,12 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
-    final equipoFontSize = isSmallScreen ? 12.0 : 8.0;
-    final columnaFontSize = isSmallScreen ? 14.0 : 11.0;
-    final ptsFontSize = isSmallScreen ? 14.0 : 11.0;
-    final equipoFontWeight = FontWeight.w600;
+    final partidoEnDirectoFontSize = isSmallScreen ? 24.0 : 22.0;
+    final fechaHoraFontSize = isSmallScreen ? 12.0 : 11.0;
+    final clubFontSize = isSmallScreen ? 16.0 : 14.0;
+    final golesFontSize = isSmallScreen ? 30.0 : 36.0;
+    final condicionalFontSize = isSmallScreen ? 24.0 : 22.0;
+    final botonTarjetaFontSize = isSmallScreen ? 14.0 : 12.0;
 
     return FutureBuilder<List<ResultadosRow>>(
       future: ResultadosTable().querySingleRow(
@@ -253,7 +255,8 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                                   .headlineMedium
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 24.0,
+                                                        fontSize:
+                                                            partidoEnDirectoFontSize,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -298,7 +301,8 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                             ),
-                                                            fontSize: 12.0,
+                                                            fontSize:
+                                                                fechaHoraFontSize,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w600,
@@ -344,7 +348,7 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                                         .fontStyle,
                                                                   ),
                                                                   fontSize:
-                                                                      12.0,
+                                                                      clubFontSize,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -375,32 +379,34 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                         'Hora',
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .inter(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  fontSize:
+                                                                      fechaHoraFontSize,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                            ),
+                                                                ),
                                                       ),
                                                     ),
                                                   ),
@@ -421,32 +427,34 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                             "Hm",
                                                             partidopageResultadosRow!
                                                                 .hora!.time),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .inter(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  fontSize:
+                                                                      fechaHoraFontSize,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                            ),
+                                                                ),
                                                       ),
                                                     ),
                                                   ),
@@ -1361,7 +1369,8 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryText,
-                                                      fontSize: 26.0,
+                                                      fontSize:
+                                                          condicionalFontSize,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
@@ -1394,7 +1403,7 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .primaryText,
-                                                    fontSize: 30.0,
+                                                    fontSize: golesFontSize,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                     fontStyle:
@@ -2254,7 +2263,7 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                                           context)
                                                                       .primaryText,
                                                                   fontSize:
-                                                                      16.0,
+                                                                      botonTarjetaFontSize,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
@@ -2500,6 +2509,8 @@ class _PartidopageWidgetState extends State<PartidopageWidget> {
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .primaryText,
+                                                                  fontSize:
+                                                                      botonTarjetaFontSize,
                                                                   letterSpacing:
                                                                       0.0,
                                                                   fontWeight: FlutterFlowTheme.of(
