@@ -506,7 +506,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                             fontSize:
-                                                                                16.0,
+                                                                                infoFontSize,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
@@ -580,7 +580,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                             fontSize:
-                                                                                16.0,
+                                                                                infoFontSize,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
@@ -781,7 +781,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                             fontSize:
-                                                                                16.0,
+                                                                                infoFontSize,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
@@ -828,7 +828,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                             fontSize:
-                                                                                16.0,
+                                                                                infoFontSize,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
@@ -875,7 +875,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                             fontSize:
-                                                                                16.0,
+                                                                                infoFontSize,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
@@ -1230,7 +1230,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                               fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                             ),
                                                                             fontSize:
-                                                                                16.0,
+                                                                                infoFontSize,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
