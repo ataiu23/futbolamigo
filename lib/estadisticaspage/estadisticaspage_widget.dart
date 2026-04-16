@@ -473,6 +473,8 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                             ),
                                                                             letterSpacing:
                                                                                 0.0,
+                                                                            fontSize:
+                                                                                infoFontSize,
                                                                             fontWeight:
                                                                                 FlutterFlowTheme.of(context).labelMedium.fontWeight,
                                                                             fontStyle:
