@@ -39,4 +39,7 @@ class JugadoresRow extends SupabaseDataRow {
 
   int? get posicion => getField<int>('posicion');
   set posicion(int? value) => setField<int>('posicion', value);
+
+  String? get pieDominante => getField<String>('pie_dominante');
+  set pieDominante(String? value) => setField<String>('pie_dominante', value);
 }

@@ -78,8 +78,10 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                 .toList()
                 .toList()
                 .cast<String>();
-            _model.indicePases = List.generate(_model.pases.length, (i) => i.toDouble());
-            _model.fechasPasesDouble = List.generate(_model.fechapase.length, (i) => i.toDouble());
+            _model.indicePases =
+                List.generate(_model.pases.length, (i) => i.toDouble());
+            _model.fechasPasesDouble =
+                List.generate(_model.fechapase.length, (i) => i.toDouble());
             _model.anchograficopases =
                 _model.pases.length <= 8 ? 300 : (_model.pases.length * 33);
             safeSetState(() {});
@@ -103,8 +105,10 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                 .toList()
                 .toList()
                 .cast<String>();
-            _model.indiceTiro = List.generate(_model.tiro.length, (i) => i.toDouble());
-            _model.fechasTiroDouble = List.generate(_model.fechatiro.length, (i) => i.toDouble());
+            _model.indiceTiro =
+                List.generate(_model.tiro.length, (i) => i.toDouble());
+            _model.fechasTiroDouble =
+                List.generate(_model.fechatiro.length, (i) => i.toDouble());
             _model.anchograficotiro =
                 _model.tiro.length <= 8 ? 300 : (_model.tiro.length * 33);
             safeSetState(() {});
@@ -135,8 +139,10 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                     .toList())
                 .toList()
                 .cast<double>();
-            _model.indiceVelocidad = List.generate(_model.velocidad.length, (i) => i.toDouble());
-            _model.fechasVelocidadDouble = List.generate(_model.fechavelocidad.length, (i) => i.toDouble());
+            _model.indiceVelocidad =
+                List.generate(_model.velocidad.length, (i) => i.toDouble());
+            _model.fechasVelocidadDouble = List.generate(
+                _model.fechavelocidad.length, (i) => i.toDouble());
             safeSetState(() {});
           }
         }),
@@ -177,8 +183,10 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
             }(_model.conotirado.toList(), _model.regate.toList())
                 .toList()
                 .cast<double>();
-            _model.indiceRegate = List.generate(_model.regatetotal.length, (i) => i.toDouble());
-            _model.fechasRegateDouble = List.generate(_model.fecharegate.length, (i) => i.toDouble());
+            _model.indiceRegate =
+                List.generate(_model.regatetotal.length, (i) => i.toDouble());
+            _model.fechasRegateDouble =
+                List.generate(_model.fecharegate.length, (i) => i.toDouble());
             safeSetState(() {});
           }
         }),
@@ -248,6 +256,11 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final isSmallScreen = screenWidth < 414;
+    final infoFontSize = isSmallScreen ? 16.0 : 13.0;
+    final datosFontSize = isSmallScreen ? 10.0 : 8.0;
+
     return FutureBuilder<List<VistaRendimientoJugadorRow>>(
       future: VistaRendimientoJugadorTable().querySingleRow(
         queryFn: (q) => q.eqOrNull(
@@ -601,7 +614,12 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                     ),
                                                                   ),
                                                                   Text(
-                                                                    'Diestro',
+                                                                    valueOrDefault<
+                                                                        String>(
+                                                                      containerJugadoresRow
+                                                                          ?.pieDominante,
+                                                                      'Diestro',
+                                                                    ),
                                                                     style: FlutterFlowTheme.of(
                                                                             context)
                                                                         .bodyMedium
@@ -614,7 +632,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
                                                                           fontSize:
-                                                                              16.0,
+                                                                              infoFontSize,
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -921,7 +939,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                                       fontWeight: FontWeight.w600,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
-                                                                                    fontSize: 16.0,
+                                                                                    fontSize: infoFontSize,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w600,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -952,7 +970,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                                       fontWeight: FontWeight.w600,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
-                                                                                    fontSize: 16.0,
+                                                                                    fontSize: infoFontSize,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w600,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -1076,7 +1094,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                                       fontWeight: FontWeight.w600,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
-                                                                                    fontSize: 16.0,
+                                                                                    fontSize: infoFontSize,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w600,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -1139,7 +1157,7 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                                       fontWeight: FontWeight.w600,
                                                                                       fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                                     ),
-                                                                                    fontSize: 16.0,
+                                                                                    fontSize: infoFontSize,
                                                                                     letterSpacing: 0.0,
                                                                                     fontWeight: FontWeight.w600,
                                                                                     fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
@@ -1284,100 +1302,100 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                           alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                MediaQuery.sizeOf(context).width * 1.0,
+                                                                            height:
+                                                                                182.9,
                                                                             child:
-                                                                                Container(
-                                                                              width:
-                                                                                  MediaQuery.sizeOf(context).width * 1.0,
-                                                                              height:
-                                                                                  182.9,
-                                                                              child:
-                                                                                  FlutterFlowLineChart(
-                                                                                    data: [
-                                                                                      FFLineChartData(
-                                                                                        xData: _model.indicePases,
-                                                                                        yData: _model.pases.map((e) => e.toDouble()).toList(),
-                                                                                        settings: LineChartBarData(
-                                                                                          color: FlutterFlowTheme.of(context).primary,
-                                                                                          dotData: FlDotData(show: true),
-                                                                                          belowBarData: BarAreaData(show: false),
-                                                                                        ),
-                                                                                      )
-                                                                                    ],
-                                                                                    chartStylingInfo: ChartStylingInfo(
-                                                                                      enableTooltip: true,
-                                                                                      tooltipBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                      showGrid: true,
-                                                                                      borderColor: Color(0x5257636C),
-                                                                                      borderWidth: 6.0,
-                                                                                    ),
-                                                                                    axisBounds: AxisBounds(
-                                                                                      minY: 0.0,
-                                                                                      maxY: _model.pases.isNotEmpty ? _model.pases.reduce((a, b) => a > b ? a : b).toDouble() * 1.2 : 100.0,
-                                                                                    ),
-                                                                                    xAxisLabelInfo: AxisLabelInfo(
-                                                                                      showLabels: true,
-                                                                                      title: 'Fecha',
-                                                                                      titleTextStyle: TextStyle(
+                                                                                FlutterFlowLineChart(
+                                                                              data: [
+                                                                                FFLineChartData(
+                                                                                  xData: _model.indicePases,
+                                                                                  yData: _model.pases.map((e) => e.toDouble()).toList(),
+                                                                                  settings: LineChartBarData(
+                                                                                    color: FlutterFlowTheme.of(context).primary,
+                                                                                    dotData: FlDotData(show: true),
+                                                                                    belowBarData: BarAreaData(show: false),
+                                                                                  ),
+                                                                                )
+                                                                              ],
+                                                                              chartStylingInfo: ChartStylingInfo(
+                                                                                enableTooltip: true,
+                                                                                tooltipBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                showGrid: true,
+                                                                                borderColor: Color(0x5257636C),
+                                                                                borderWidth: 6.0,
+                                                                              ),
+                                                                              axisBounds: AxisBounds(
+                                                                                minY: 0.0,
+                                                                                maxY: _model.pases.isNotEmpty ? _model.pases.reduce((a, b) => a > b ? a : b).toDouble() * 1.2 : 100.0,
+                                                                              ),
+                                                                              xAxisLabelInfo: AxisLabelInfo(
+                                                                                showLabels: true,
+                                                                                title: 'Fecha',
+                                                                                titleTextStyle: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelTextStyle: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelInterval: 1.0,
+                                                                                reservedSize: 40.0,
+                                                                                getXTitlesWidget: (value, _) {
+                                                                                  final index = value.toInt();
+                                                                                  if (index >= 0 && index < _model.fechapase.length) {
+                                                                                    return Text(
+                                                                                      _model.fechapase[index],
+                                                                                      style: TextStyle(
                                                                                         color: FlutterFlowTheme.of(context).primaryText,
-                                                                                        fontSize: 10.0,
+                                                                                        fontSize: datosFontSize,
                                                                                       ),
-                                                                                      labelTextStyle: TextStyle(
-                                                                                        color: FlutterFlowTheme.of(context).primaryText,
-                                                                                        fontSize: 10.0,
-                                                                                      ),
-                                                                                      labelInterval: 1.0,
-                                                                                      reservedSize: 40.0,
-                                                                                      getXTitlesWidget: (value, _) {
-                                                                                        final index = value.toInt();
-                                                                                        if (index >= 0 && index < _model.fechapase.length) {
-                                                                                          return Text(
-                                                                                            _model.fechapase[index],
-                                                                                            style: TextStyle(
-                                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                                              fontSize: 10.0,
-                                                                                            ),
-                                                                                          );
-                                                                                        }
-                                                                                        return Text('');
-                                                                                      },
-                                                                                    ),
-                                                                                    yAxisLabelInfo: AxisLabelInfo(
-                                                                                      showLabels: true,
-                                                                                      labelTextStyle: GoogleFonts.roboto(
-                                                                                        fontSize: 10.0,
-                                                                                      ),
-                                                                                      labelInterval: 10.0,
-                                                                                      reservedSize: 30.0,
-                                                                                    ),
-                                                                                   ),
-                                                                                 ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation1']!),
-                                                                         ),
-                                                                       ),
-                                                                     ],
-                                                                   ),
-                                                                 ),
-                                                               ],
-                                                             ),
-                                                           ),
-                                                           Padding(
-                                                             padding:
-                                                                 EdgeInsetsDirectional
-                                                                     .fromSTEB(
-                                                                         0.0,
-                                                                         0.0,
-                                                                         0.0,
-                                                                         16.0),
-                                                             child: Column(
-                                                               mainAxisSize:
-                                                                   MainAxisSize
-                                                                       .max,
-                                                               mainAxisAlignment:
-                                                                   MainAxisAlignment
-                                                                       .spaceEvenly,
-                                                               children: [
-                                                                 SizedBox(
-                                                                   width: 150.0,
+                                                                                    );
+                                                                                  }
+                                                                                  return Text('');
+                                                                                },
+                                                                              ),
+                                                                              yAxisLabelInfo: AxisLabelInfo(
+                                                                                showLabels: true,
+                                                                                labelTextStyle: GoogleFonts.roboto(
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelInterval: 10.0,
+                                                                                reservedSize: 30.0,
+                                                                              ),
+                                                                            ),
+                                                                          ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation1']!),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        16.0),
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .spaceEvenly,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: 150.0,
                                                                   child:
                                                                       Divider(
                                                                     thickness:
@@ -1438,79 +1456,79 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                           color:
                                                                               FlutterFlowTheme.of(context).secondaryBackground,
                                                                         ),
-                                                                             child:
-                                                                                 Align(
-                                                                               alignment: AlignmentDirectional(
-                                                                                   0.0,
-                                                                                   0.0),
-                                                                               child:
-                                                                                   Container(
-                                                                                 width:
-                                                                                     MediaQuery.sizeOf(context).width * 1.0,
-                                                                                 height:
-                                                                                     182.9,
-                                                                                 child:
-                                                                                     FlutterFlowLineChart(
-                                                                                       data: [
-                                                                                         FFLineChartData(
-                                                                                           xData: _model.indiceTiro,
-                                                                                           yData: _model.tiro.map((e) => e.toDouble()).toList(),
-                                                                                           settings: LineChartBarData(
-                                                                                             color: FlutterFlowTheme.of(context).primary,
-                                                                                             dotData: FlDotData(show: true),
-                                                                                             belowBarData: BarAreaData(show: false),
-                                                                                           ),
-                                                                                         )
-                                                                                       ],
-                                                                                       chartStylingInfo: ChartStylingInfo(
-                                                                                         enableTooltip: true,
-                                                                                         tooltipBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                         showGrid: true,
-                                                                                         borderColor: Color(0x5257636C),
-                                                                                         borderWidth: 6.0,
-                                                                                       ),
-                                                                                       axisBounds: AxisBounds(
-                                                                                         minY: 0.0,
-                                                                                         maxY: _model.tiro.isNotEmpty ? _model.tiro.reduce((a, b) => a > b ? a : b).toDouble() * 1.2 : 100.0,
-                                                                                       ),
-                                                                                       xAxisLabelInfo: AxisLabelInfo(
-                                                                                         showLabels: true,
-                                                                                         title: 'Fecha',
-                                                                                         titleTextStyle: TextStyle(
-                                                                                           color: FlutterFlowTheme.of(context).primaryText,
-                                                                                           fontSize: 10.0,
-                                                                                         ),
-                                                                                         labelTextStyle: TextStyle(
-                                                                                           color: FlutterFlowTheme.of(context).primaryText,
-                                                                                           fontSize: 10.0,
-                                                                                         ),
-                                                                                          labelInterval: 1.0,
-                                                                                          reservedSize: 40.0,
-                                                                                          getXTitlesWidget: (value, _) {
-                                                                                            final index = value.toInt();
-                                                                                            if (index >= 0 && index < _model.fechatiro.length) {
-                                                                                              return Text(
-                                                                                                _model.fechatiro[index],
-                                                                                                style: TextStyle(
-                                                                                                  color: FlutterFlowTheme.of(context).primaryText,
-                                                                                                  fontSize: 10.0,
-                                                                                                ),
-                                                                                              );
-                                                                                            }
-                                                                                            return Text('');
-                                                                                          },
-                                                                                        ),
-                                                                                       yAxisLabelInfo: AxisLabelInfo(
-                                                                                         showLabels: true,
-                                                                                         labelTextStyle: GoogleFonts.roboto(
-                                                                                           fontSize: 10.0,
-                                                                                         ),
-                                                                                         labelInterval: 10.0,
-                                                                                         reservedSize: 30.0,
-                                                                                       ),
-                                                                                     ),
-                                                                                   ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation2']!),
+                                                                        child:
+                                                                            Align(
+                                                                          alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                MediaQuery.sizeOf(context).width * 1.0,
+                                                                            height:
+                                                                                182.9,
+                                                                            child:
+                                                                                FlutterFlowLineChart(
+                                                                              data: [
+                                                                                FFLineChartData(
+                                                                                  xData: _model.indiceTiro,
+                                                                                  yData: _model.tiro.map((e) => e.toDouble()).toList(),
+                                                                                  settings: LineChartBarData(
+                                                                                    color: FlutterFlowTheme.of(context).primary,
+                                                                                    dotData: FlDotData(show: true),
+                                                                                    belowBarData: BarAreaData(show: false),
+                                                                                  ),
+                                                                                )
+                                                                              ],
+                                                                              chartStylingInfo: ChartStylingInfo(
+                                                                                enableTooltip: true,
+                                                                                tooltipBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                showGrid: true,
+                                                                                borderColor: Color(0x5257636C),
+                                                                                borderWidth: 6.0,
+                                                                              ),
+                                                                              axisBounds: AxisBounds(
+                                                                                minY: 0.0,
+                                                                                maxY: _model.tiro.isNotEmpty ? _model.tiro.reduce((a, b) => a > b ? a : b).toDouble() * 1.2 : 100.0,
+                                                                              ),
+                                                                              xAxisLabelInfo: AxisLabelInfo(
+                                                                                showLabels: true,
+                                                                                title: 'Fecha',
+                                                                                titleTextStyle: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelTextStyle: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelInterval: 1.0,
+                                                                                reservedSize: 40.0,
+                                                                                getXTitlesWidget: (value, _) {
+                                                                                  final index = value.toInt();
+                                                                                  if (index >= 0 && index < _model.fechatiro.length) {
+                                                                                    return Text(
+                                                                                      _model.fechatiro[index],
+                                                                                      style: TextStyle(
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: datosFontSize,
+                                                                                      ),
+                                                                                    );
+                                                                                  }
+                                                                                  return Text('');
+                                                                                },
+                                                                              ),
+                                                                              yAxisLabelInfo: AxisLabelInfo(
+                                                                                showLabels: true,
+                                                                                labelTextStyle: GoogleFonts.roboto(
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelInterval: 10.0,
+                                                                                reservedSize: 30.0,
+                                                                              ),
+                                                                            ),
+                                                                          ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation2']!),
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1602,74 +1620,74 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                           alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
-                                                                           child:
-                                                                               Container(
-                                                                             width:
-                                                                                 MediaQuery.sizeOf(context).width * 1.0,
-                                                                             height:
-                                                                                 182.9,
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                MediaQuery.sizeOf(context).width * 1.0,
+                                                                            height:
+                                                                                182.9,
                                                                             child:
                                                                                 FlutterFlowLineChart(
-                                                                                  data: [
-                                                                                    FFLineChartData(
-                                                                                      xData: _model.indiceVelocidad,
-                                                                                      yData: _model.velocidad,
-                                                                                      settings: LineChartBarData(
-                                                                                        color: FlutterFlowTheme.of(context).primary,
-                                                                                        dotData: FlDotData(show: true),
-                                                                                        belowBarData: BarAreaData(show: false),
-                                                                                      ),
-                                                                                    )
-                                                                                  ],
-                                                                                  chartStylingInfo: ChartStylingInfo(
-                                                                                    enableTooltip: true,
-                                                                                    tooltipBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                    backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                    showGrid: true,
-                                                                                    borderColor: Color(0x5257636C),
-                                                                                    borderWidth: 6.0,
+                                                                              data: [
+                                                                                FFLineChartData(
+                                                                                  xData: _model.indiceVelocidad,
+                                                                                  yData: _model.velocidad,
+                                                                                  settings: LineChartBarData(
+                                                                                    color: FlutterFlowTheme.of(context).primary,
+                                                                                    dotData: FlDotData(show: true),
+                                                                                    belowBarData: BarAreaData(show: false),
                                                                                   ),
-                                                                                  axisBounds: AxisBounds(
-                                                                                    minY: 0.0,
-                                                                                    maxY: _model.velocidad.isNotEmpty ? _model.velocidad.reduce((a, b) => a > b ? a : b) * 1.2 : 15.0,
-                                                                                  ),
-                                                                                  xAxisLabelInfo: AxisLabelInfo(
-                                                                                    showLabels: true,
-                                                                                    title: 'Fecha',
-                                                                                    titleTextStyle: TextStyle(
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 10.0,
-                                                                                    ),
-                                                                                    labelTextStyle: TextStyle(
-                                                                                      color: FlutterFlowTheme.of(context).primaryText,
-                                                                                      fontSize: 10.0,
-                                                                                    ),
-                                                                                     labelInterval: 1.0,
-                                                                                     reservedSize: 40.0,
-                                                                                     getXTitlesWidget: (value, _) {
-                                                                                       final index = value.toInt();
-                                                                                       if (index >= 0 && index < _model.fechavelocidad.length) {
-                                                                                         return Text(
-                                                                                           _model.fechavelocidad[index],
-                                                                                           style: TextStyle(
-                                                                                             color: FlutterFlowTheme.of(context).primaryText,
-                                                                                             fontSize: 10.0,
-                                                                                           ),
-                                                                                         );
-                                                                                       }
-                                                                                       return Text('');
-                                                                                     },
-                                                                                   ),
-                                                                                  yAxisLabelInfo: AxisLabelInfo(
-                                                                                    showLabels: true,
-                                                                                    labelTextStyle: GoogleFonts.roboto(
-                                                                                      fontSize: 10.0,
-                                                                                    ),
-                                                                                    labelInterval: 1.0,
-                                                                                    reservedSize: 30.0,
-                                                                                  ),
+                                                                                )
+                                                                              ],
+                                                                              chartStylingInfo: ChartStylingInfo(
+                                                                                enableTooltip: true,
+                                                                                tooltipBackgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                                showGrid: true,
+                                                                                borderColor: Color(0x5257636C),
+                                                                                borderWidth: 6.0,
+                                                                              ),
+                                                                              axisBounds: AxisBounds(
+                                                                                minY: 0.0,
+                                                                                maxY: _model.velocidad.isNotEmpty ? _model.velocidad.reduce((a, b) => a > b ? a : b) * 1.2 : 15.0,
+                                                                              ),
+                                                                              xAxisLabelInfo: AxisLabelInfo(
+                                                                                showLabels: true,
+                                                                                title: 'Fecha',
+                                                                                titleTextStyle: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontSize: datosFontSize,
                                                                                 ),
-                                                                              ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation3']!),
+                                                                                labelTextStyle: TextStyle(
+                                                                                  color: FlutterFlowTheme.of(context).primaryText,
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelInterval: 1.0,
+                                                                                reservedSize: 40.0,
+                                                                                getXTitlesWidget: (value, _) {
+                                                                                  final index = value.toInt();
+                                                                                  if (index >= 0 && index < _model.fechavelocidad.length) {
+                                                                                    return Text(
+                                                                                      _model.fechavelocidad[index],
+                                                                                      style: TextStyle(
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: datosFontSize,
+                                                                                      ),
+                                                                                    );
+                                                                                  }
+                                                                                  return Text('');
+                                                                                },
+                                                                              ),
+                                                                              yAxisLabelInfo: AxisLabelInfo(
+                                                                                showLabels: true,
+                                                                                labelTextStyle: GoogleFonts.roboto(
+                                                                                  fontSize: datosFontSize,
+                                                                                ),
+                                                                                labelInterval: 1.0,
+                                                                                reservedSize: 30.0,
+                                                                              ),
+                                                                            ),
+                                                                          ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation3']!),
                                                                         ),
                                                                       ),
                                                                     ],
@@ -1761,14 +1779,14 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                           alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
-                                                                     child:
-                                                                         Container(
-                                                                       width:
-                                                                           MediaQuery.sizeOf(context).width * 1.0,
-                                                                       height:
-                                                                           182.9,
-                                                                        child:
-                                                                            FlutterFlowLineChart(
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                MediaQuery.sizeOf(context).width * 1.0,
+                                                                            height:
+                                                                                182.9,
+                                                                            child:
+                                                                                FlutterFlowLineChart(
                                                                               data: [
                                                                                 FFLineChartData(
                                                                                   xData: _model.indiceRegate,
@@ -1797,38 +1815,38 @@ class _EstadisticaspageWidgetState extends State<EstadisticaspageWidget>
                                                                                 title: 'Fecha',
                                                                                 titleTextStyle: TextStyle(
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
-                                                                                  fontSize: 10.0,
+                                                                                  fontSize: datosFontSize,
                                                                                 ),
                                                                                 labelTextStyle: TextStyle(
                                                                                   color: FlutterFlowTheme.of(context).primaryText,
-                                                                                  fontSize: 10.0,
+                                                                                  fontSize: datosFontSize,
                                                                                 ),
-                                                                                 labelInterval: 1.0,
-                                                                                 reservedSize: 40.0,
-                                                                                 getXTitlesWidget: (value, _) {
-                                                                                   final index = value.toInt();
-                                                                                   if (index >= 0 && index < _model.fecharegate.length) {
-                                                                                     return Text(
-                                                                                       _model.fecharegate[index],
-                                                                                       style: TextStyle(
-                                                                                         color: FlutterFlowTheme.of(context).primaryText,
-                                                                                         fontSize: 10.0,
-                                                                                       ),
-                                                                                     );
-                                                                                   }
-                                                                                   return Text('');
-                                                                                 },
-                                                                               ),
+                                                                                labelInterval: 1.0,
+                                                                                reservedSize: 40.0,
+                                                                                getXTitlesWidget: (value, _) {
+                                                                                  final index = value.toInt();
+                                                                                  if (index >= 0 && index < _model.fecharegate.length) {
+                                                                                    return Text(
+                                                                                      _model.fecharegate[index],
+                                                                                      style: TextStyle(
+                                                                                        color: FlutterFlowTheme.of(context).primaryText,
+                                                                                        fontSize: datosFontSize,
+                                                                                      ),
+                                                                                    );
+                                                                                  }
+                                                                                  return Text('');
+                                                                                },
+                                                                              ),
                                                                               yAxisLabelInfo: AxisLabelInfo(
                                                                                 showLabels: true,
                                                                                 labelTextStyle: GoogleFonts.roboto(
-                                                                                  fontSize: 10.0,
+                                                                                  fontSize: datosFontSize,
                                                                                 ),
                                                                                 labelInterval: 1.0,
                                                                                 reservedSize: 30.0,
                                                                               ),
                                                                             ),
-                                                                        ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation4']!),
+                                                                          ).animateOnPageLoad(animationsMap['chartOnPageLoadAnimation4']!),
                                                                         ),
                                                                       ),
                                                                     ],
