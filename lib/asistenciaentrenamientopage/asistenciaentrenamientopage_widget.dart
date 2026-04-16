@@ -67,7 +67,7 @@ class _AsistenciaentrenamientopageWidgetState
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
-    final equipoFontSize = isSmallScreen ? 26.0 : 20.0;
+    final equipoFontSize = isSmallScreen ? 26.0 : 17.0;
 
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
