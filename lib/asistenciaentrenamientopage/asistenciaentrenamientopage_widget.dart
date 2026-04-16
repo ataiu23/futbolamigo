@@ -65,6 +65,10 @@ class _AsistenciaentrenamientopageWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final isSmallScreen = screenWidth < 414;
+    final equipoFontSize = isSmallScreen ? 26.0 : 20.0;
+
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
         queryFn: (q) => q.eqOrNull(
@@ -499,7 +503,8 @@ class _AsistenciaentrenamientopageWidgetState
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                             ),
-                                                            fontSize: 26.0,
+                                                            fontSize:
+                                                                equipoFontSize,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
                                                                 FontWeight.w600,
