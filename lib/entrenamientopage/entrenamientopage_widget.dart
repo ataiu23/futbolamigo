@@ -129,7 +129,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
-    final equipoFontSize = isSmallScreen ? 26.0 : 16.0;
+    final equipoFontSize = isSmallScreen ? 26.0 : 14.0;
 
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
@@ -217,7 +217,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 20.0),
                                         child: Container(
-                                          width: 180.0,
+                                          width: 320.0,
                                           height: 94.4,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
@@ -290,6 +290,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                                   5.0),
                                                       child: Text(
                                                         'Tipos de Entrenamiento',
+                                                        maxLines: 1,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
