@@ -127,6 +127,10 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final isSmallScreen = screenWidth < 414;
+    final equipoFontSize = isSmallScreen ? 26.0 : 16.0;
+
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
         queryFn: (q) => q.eqOrNull(
@@ -194,7 +198,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                             alignment: AlignmentDirectional(0.0, -1.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 60.0, 0.0, 100.0),
+                                  0.0, 40.0, 0.0, 80.0),
                               child: Container(
                                 width: 340.0,
                                 height: double.infinity,
@@ -213,7 +217,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 20.0),
                                         child: Container(
-                                          width: 202.1,
+                                          width: 180.0,
                                           height: 94.4,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
@@ -246,32 +250,34 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                         ),
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              font: GoogleFonts
-                                                                  .inter(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                              fontSize: 26.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  fontSize:
+                                                                      equipoFontSize,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                            ),
+                                                                ),
                                                       ),
                                                     ),
                                                     Padding(
