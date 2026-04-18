@@ -130,7 +130,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
     final equipoFontSize = isSmallScreen ? 26.0 : 19.0;
-    final timerFontSize = isSmallScreen ? 16.0 : 20.0;
+    final timerFontSize = isSmallScreen ? 11.0 : 20.0;
 
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
