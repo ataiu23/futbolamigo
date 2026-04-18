@@ -129,7 +129,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     final isSmallScreen = screenWidth < 414;
-    final equipoFontSize = isSmallScreen ? 26.0 : 14.0;
+    final equipoFontSize = isSmallScreen ? 26.0 : 19.0;
 
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
@@ -226,14 +226,15 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    8.0, 0.0, 0.0, 0.0),
+                                                    0.0, 0.0, 0.0, 0.0),
                                             child: Stack(
                                               children: [
                                                 Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
+                                                      CrossAxisAlignment
+                                                          .stretch,
                                                   children: [
                                                     Padding(
                                                       padding:
@@ -291,6 +292,8 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                       child: Text(
                                                         'Tipos de Entrenamiento',
                                                         maxLines: 1,
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
