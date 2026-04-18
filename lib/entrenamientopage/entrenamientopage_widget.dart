@@ -131,6 +131,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
     final isSmallScreen = screenWidth < 414;
     final equipoFontSize = isSmallScreen ? 26.0 : 19.0;
     final timerFontSize = isSmallScreen ? 11.0 : 20.0;
+    final timer2FontSize = isSmallScreen ? 14.0 : 18.0;
 
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
@@ -2024,7 +2025,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                                                   fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
                                                                                 ),
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                fontSize: 18.0,
+                                                                                fontSize: timer2FontSize,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.normal,
                                                                                 fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
