@@ -127,12 +127,6 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.sizeOf(context).width;
-    final isSmallScreen = screenWidth < 414;
-    final equipoFontSize = isSmallScreen ? 26.0 : 19.0;
-    final timerFontSize = isSmallScreen ? 11.0 : 20.0;
-    final timer2FontSize = isSmallScreen ? 14.0 : 18.0;
-
     return FutureBuilder<List<JugadoresRow>>(
       future: JugadoresTable().queryRows(
         queryFn: (q) => q.eqOrNull(
@@ -200,7 +194,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                             alignment: AlignmentDirectional(0.0, -1.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 40.0, 0.0, 80.0),
+                                  0.0, 60.0, 0.0, 100.0),
                               child: Container(
                                 width: 340.0,
                                 height: double.infinity,
@@ -219,7 +213,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 20.0),
                                         child: Container(
-                                          width: 320.0,
+                                          width: 202.1,
                                           height: 94.4,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
@@ -228,15 +222,14 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                           child: Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
+                                                    8.0, 0.0, 0.0, 0.0),
                                             child: Stack(
                                               children: [
                                                 Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
                                                   crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .stretch,
+                                                      CrossAxisAlignment.center,
                                                   children: [
                                                     Padding(
                                                       padding:
@@ -253,34 +246,32 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                         ),
                                                         textAlign:
                                                             TextAlign.center,
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w600,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  fontSize:
-                                                                      equipoFontSize,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontStyle: FlutterFlowTheme.of(
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                              font: GoogleFonts
+                                                                  .inter(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                              fontSize: 26.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                                ),
+                                                            ),
                                                       ),
                                                     ),
                                                     Padding(
@@ -293,9 +284,6 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                                   5.0),
                                                       child: Text(
                                                         'Tipos de Entrenamiento',
-                                                        maxLines: 1,
-                                                        textAlign:
-                                                            TextAlign.center,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -1651,7 +1639,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).secondaryBackground,
                                                                             fontSize:
-                                                                                timerFontSize,
+                                                                                20.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                             fontWeight:
@@ -2025,7 +2013,7 @@ class _EntrenamientopageWidgetState extends State<EntrenamientopageWidget>
                                                                                   fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
                                                                                 ),
                                                                                 color: FlutterFlowTheme.of(context).secondaryBackground,
-                                                                                fontSize: timer2FontSize,
+                                                                                fontSize: 18.0,
                                                                                 letterSpacing: 0.0,
                                                                                 fontWeight: FontWeight.normal,
                                                                                 fontStyle: FlutterFlowTheme.of(context).headlineSmall.fontStyle,
